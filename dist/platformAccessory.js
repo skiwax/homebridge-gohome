@@ -69,8 +69,8 @@ class ExamplePlatformAccessory {
             // push the new value to HomeKit
             motionSensorOneService.updateCharacteristic(this.platform.Characteristic.MotionDetected, motionDetected);
             motionSensorTwoService.updateCharacteristic(this.platform.Characteristic.MotionDetected, !motionDetected);
-            this.platform.log.debug('Triggering motionSensorOneService:', motionDetected);
-            this.platform.log.debug('Triggering motionSensorTwoService:', !motionDetected);
+            this.platform.log.info('Triggering motionSensorOneService:', motionDetected);
+            this.platform.log.info('Triggering motionSensorTwoService:', !motionDetected);
         }, 10000);
     }
     /**
@@ -80,7 +80,7 @@ class ExamplePlatformAccessory {
     async setOn(value) {
         // implement your own code to turn your device on/off
         this.exampleStates.On = value;
-        this.platform.log.debug('Set Characteristic On ->', value);
+        this.platform.log.info('Set Characteristic On ->', value);
     }
     /**
      * Handle the "GET" requests from HomeKit
@@ -98,7 +98,7 @@ class ExamplePlatformAccessory {
     async getOn() {
         // implement your own code to check if the device is on
         const isOn = this.exampleStates.On;
-        this.platform.log.debug('Get Characteristic On ->', isOn);
+        this.platform.log.info('Get Characteristic On ->', isOn);
         // if you need to return an error to show the device as "Not Responding" in the Home app:
         // throw new this.platform.api.hap.HapStatusError(this.platform.api.hap.HAPStatus.SERVICE_COMMUNICATION_FAILURE);
         return isOn;
@@ -110,7 +110,7 @@ class ExamplePlatformAccessory {
     async setBrightness(value) {
         // implement your own code to set the brightness
         this.exampleStates.Brightness = value;
-        this.platform.log.debug('Set Characteristic Brightness -> ', value);
+        this.platform.log.info('Set Characteristic Brightness -> ', value);
     }
 }
 exports.ExamplePlatformAccessory = ExamplePlatformAccessory;
